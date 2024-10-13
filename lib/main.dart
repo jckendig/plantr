@@ -99,9 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 CupertinoPageRoute(
-                    builder: (context) => NewPlantScreen(
-                        addPlantCallback:
-                            _addNewPlant)), // Replace `NewScreen` with your target widget
+                    builder: (context) =>
+                        NewPlantScreen(addPlantCallback: _addNewPlant)),
               );
               // You can navigate, show a dialog, etc.
             },
