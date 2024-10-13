@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plantr/Models/plant.dart';
+import 'package:plantr/Screens/new_plant_screen.dart';
 import 'package:plantr/Widgets/plant_list_widget.dart';
 
 void main() {
@@ -60,25 +61,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Plant> plants = [
     Plant(
-      imageUrl:
-          'assets/transparent-cartoon-plants-succulent-plant-free-music-free-mus-5edb68f1ca8e24.7611070815914375538297.jpg',
       title: 'Aloe Vera',
       description: 'A succulent plant species known for its medicinal uses.',
     ),
     Plant(
-      imageUrl:
-          'assets/transparent-cartoon-plants-succulent-plant-free-music-free-mus-5edb68f1ca8e24.7611070815914375538297.jpg',
       title: 'Fiddle Leaf Fig',
       description: 'A popular houseplant with large, glossy leaves.',
     ),
     Plant(
-      imageUrl:
-          'assets/transparent-cartoon-plants-succulent-plant-free-music-free-mus-5edb68f1ca8e24.7611070815914375538297.jpg',
       title: 'Snake Plant',
       description: 'A low-maintenance plant that can survive in low light.',
     ),
     // Add more plants as needed...
   ];
+
+  void _addNewPlant(String name, String description, String imageUrl) {
+    setState(() {
+      plants.add(
+          Plant(imageUrl: imageUrl, title: name, description: description));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +92,21 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: Text(widget.title),
-        trailing: const Icon(CupertinoIcons.add),
-      ),
+          middle: Text(widget.title),
+          trailing: GestureDetector(
+            onTap: () {
+              // Handle the icon tap event here
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => NewPlantScreen(
+                        addPlantCallback:
+                            _addNewPlant)), // Replace `NewScreen` with your target widget
+              );
+              // You can navigate, show a dialog, etc.
+            },
+            child: const Icon(CupertinoIcons.add),
+          )),
       backgroundColor: Colors.lightGreen,
       body: ListView.builder(
         itemCount: plants.length,

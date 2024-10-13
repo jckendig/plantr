@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class PlantListItem extends StatelessWidget {
   final Plant plant;
 
-  const PlantListItem({Key? key, required this.plant}) : super(key: key);
+  const PlantListItem({super.key, required this.plant});
 
   @override
   Widget build(BuildContext context) {
