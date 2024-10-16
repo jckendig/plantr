@@ -63,22 +63,29 @@ class _MyHomePageState extends State<MyHomePage> {
     Plant(
       title: 'Aloe Vera',
       description: 'A succulent plant species known for its medicinal uses.',
+      wateringFrequency: 0,
     ),
     Plant(
       title: 'Fiddle Leaf Fig',
       description: 'A popular houseplant with large, glossy leaves.',
+      wateringFrequency: 0,
     ),
     Plant(
       title: 'Snake Plant',
       description: 'A low-maintenance plant that can survive in low light.',
+      wateringFrequency: 0,
     ),
     // Add more plants as needed...
   ];
 
   void _addNewPlant(String name, String description, String imageUrl) {
     setState(() {
-      plants.add(
-          Plant(imageUrl: imageUrl, title: name, description: description));
+      plants.add(Plant(
+        imageUrl: imageUrl,
+        title: name,
+        description: description,
+        wateringFrequency: 0,
+      ));
     });
   }
 
